@@ -15,13 +15,13 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
-    <div class="container-fluid">
+    <div class="container-fluid" >
         <a class="navbar-brand" href="#">SHOPPING</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav me-auto" >
                 <li class="nav-item">
                     <a class="nav-link" href="#">Trang chủ</a>
                 </li>
@@ -32,11 +32,15 @@
                 </li>
                 {% endfor %}
             </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="text" name="kw" placeholder="Nhập sản phẩm...">
+                <button class="btn btn-primary" type="submit">Tìm</button>
+            </form>
         </div>
     </div>
 </nav>
 
-<section>
+<section class="container">
     <div class="row">
         {% for p in products %}
         <div class="col-md-3 col-xs-12">
