@@ -11,6 +11,9 @@ class Category(db.Model):
     # Tạo mối liên hệ giữa cate và pro, trong lớp Pro tự động thêm trường ref'category', và trường này là obj của cate luôn
     products = relationship('Product', backref='category', lazy=True)
 #    lazy=True là khi mình gọi pro nó mới thực hiện
+
+    def __str__(self):
+        return self.name
 class Product(db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(50), nullable=False, unique=True)
@@ -18,6 +21,8 @@ class Product(db.Model):
     image = Column(String(100))
 #     khóa ngoại
     category_id =  Column(Integer, ForeignKey(Category.id), nullable=False)
+    def __str__(self):
+        return self.name
 if __name__ == '__main__':
 
     with app.app_context():
@@ -27,7 +32,7 @@ if __name__ == '__main__':
         # db.session.add(c1)
         # db.session.add(c2)
         # db.session.commit()
-        #  db.create_all()
+        # db.create_all()
         p1 = Product(name='Iphone 13', price=15000000, category_id=1,
                      image='https://synnexfpt.com/wp-content/uploads/2022/07/Apple-iPhone-13-mini-2.jpg')
         p2 = Product(name='Iphone 13 Pro', price=18000000, category_id=1,
